@@ -1,11 +1,11 @@
 # tkinterのインポート
-import os
-import tkinter as tk
 import datetime
+import os
 import time
-from pynput import keyboard
-from PIL import ImageGrab
+import tkinter as tk
 from tkinter import filedialog, messagebox
+
+from PIL import ImageGrab
 
 
 # 保存するディレクトリを選択
@@ -68,11 +68,12 @@ def release(key):
 
 
 def ex_run_func(event):
-    if not text_box.get():
+    try:
+        make_screenshot()
+
+    except BaseException:
         # ステータスバーにエラーメッセージ
         statusbar["text"] = "Error!! 保存先のディレクトリを選択してください"
-    else:
-        make_screenshot()
 
 
 def on_close():
